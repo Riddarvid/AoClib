@@ -1,4 +1,4 @@
-package riddarvid.aoc.files;
+package riddarvid.aoc.days;
 
 import java.io.File;
 import java.io.FileNotFoundException;
@@ -6,8 +6,8 @@ import java.io.IOException;
 import java.nio.file.Files;
 import java.util.List;
 
-public class FileUtils {
-    public static List<String> getLines(File f) {
+class FileUtils {
+    static List<String> getLines(File f) {
         try {
             return Files.readAllLines(f.toPath());
         } catch (FileNotFoundException e) {
