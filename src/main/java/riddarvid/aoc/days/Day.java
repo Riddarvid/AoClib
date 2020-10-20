@@ -10,14 +10,15 @@ public abstract class Day {
 
     public Day() {
         URL url = getClass().getResource(fileName);
-        if (url == null) {
+        if (url == null || url.getPath() == null) {
             System.out.println("No such file found: " + fileName);
+        } else {
+            File f = new File(url.getPath());
+            lines = FileUtils.getLines(f);
+            setup();
+            part1();
+            part2();
         }
-        File f = new File(url.getPath());
-        lines = FileUtils.getLines(f);
-        setup();
-        part1();
-        part2();
     }
 
     protected abstract void part1();
