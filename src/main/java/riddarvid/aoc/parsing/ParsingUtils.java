@@ -4,6 +4,14 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class ParsingUtils {
+    public static List<Integer> stringsToIntegers(List<String> input) {
+        List<Integer> integers = new ArrayList<>();
+        for (String s : input) {
+            integers.add(Integer.parseInt(s));
+        }
+        return integers;
+    }
+
     public static List<Integer> getIntegers(String input) {
         int start = 0;
         List<Integer> integers = new ArrayList<>();
