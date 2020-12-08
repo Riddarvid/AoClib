@@ -4,6 +4,20 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class ParsingUtils {
+    public static boolean[][] stringsToBoolMatrix(List<String> input, char trueChar) {
+        boolean[][] matrix = new boolean[input.size()][];
+        for (int line = 0; line < input.size(); line++) {
+            String s = input.get(line);
+            matrix[line] = new boolean[s.length()];
+            for (int i = 0; i < s.length(); i++) {
+                if (s.charAt(i) == trueChar) {
+                    matrix[line][i] = true;
+                }
+            }
+        }
+        return matrix;
+    }
+
     public static List<Integer> stringsToIntegers(List<String> input) {
         List<Integer> integers = new ArrayList<>();
         for (String s : input) {

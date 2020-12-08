@@ -1,5 +1,6 @@
 package riddarvid.aoc.math;
 
+import java.util.Collections;
 import java.util.List;
 
 public class MathUtils {
@@ -13,5 +14,13 @@ public class MathUtils {
             product *= n;
         }
         return product;
+    }
+
+    public static long sum(List<Integer> ns) {
+        long sum = 0;
+        for (int n : ns) {
+            sum += n;
+        }
+        return sum;
     }
 }
