@@ -15,15 +15,18 @@ public abstract class Day {
         } else {
             File f = new File(url.getPath());
             lines = FileUtils.getLines(f);
-            setup();
-            part1();
-            part2();
         }
     }
 
-    protected abstract void part1();
+    public void run() {
+        setup();
+        part1();
+        part2();
+    }
 
-    protected abstract void part2();
+    protected abstract long part1();
+
+    protected abstract long part2();
 
     protected abstract void setup();
 }
