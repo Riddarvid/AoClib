@@ -24,9 +24,15 @@ public abstract class Day {
         part2();
     }
 
-    protected abstract long part1();
+    public void runAndPrint() {
+        setup();
+        System.out.println(part1());
+        System.out.println(part2());
+    }
 
-    protected abstract long part2();
+    public abstract long part1();
 
-    protected abstract void setup();
+    public abstract long part2();
+
+    public abstract void setup();
 }

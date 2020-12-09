@@ -23,4 +23,20 @@ public class MathUtils {
         }
         return sum;
     }
+
+    public static long productLongs(List<Long> ns) {
+        long product = 1;
+        for (long n : ns) {
+            product *= n;
+        }
+        return product;
+    }
+
+    public static long sumLongs(List<Long> ns) {
+        long sum = 0;
+        for (long n : ns) {
+            sum += n;
+        }
+        return sum;
+    }
 }

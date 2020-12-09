@@ -26,6 +26,14 @@ public class ParsingUtils {
         return integers;
     }
 
+    public static List<Long> stringsToLongs(List<String> input) {
+        List<Long> longs = new ArrayList<>();
+        for (String s : input) {
+            longs.add(Long.parseLong(s));
+        }
+        return longs;
+    }
+
     public static List<Integer> getIntegers(String input) {
         int start = 0;
         List<Integer> integers = new ArrayList<>();
