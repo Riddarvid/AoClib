@@ -54,6 +54,26 @@ public class ParsingUtils {
         return integers;
     }
 
+    public static List<Long> getLongs(String input) {
+        int start = 0;
+        List<Long> longs = new ArrayList<>();
+        while (start < input.length()) {
+            while (start < input.length() && !Character.isDigit(input.charAt(start))) {
+                start++;
+            }
+            if (start >= input.length()) {
+                break;
+            }
+            int end = start + 1;
+            while (end < input.length() && Character.isDigit(input.charAt(end))) {
+                end ++;
+            }
+            longs.add(Long.parseLong(input.substring(start, end)));
+            start = end + 1;
+        }
+        return longs;
+    }
+
     public static List<Integer> getIntegersNegative(String input) {
         int start = 0;
         List<Integer> integers = new ArrayList<>();
