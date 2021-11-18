@@ -3,7 +3,7 @@ plugins {
     id 'maven-publish'
 }
 
-group 'com.github.riddarvid'
+group 'io.github.riddarvid'
 version '0.1.0'
 
 repositories {
