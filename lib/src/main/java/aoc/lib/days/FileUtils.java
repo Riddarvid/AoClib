@@ -1,4 +1,4 @@
-package riddarvid.aoc.days;
+package aoc.lib.days;
 
 import java.io.File;
 import java.io.FileNotFoundException;
