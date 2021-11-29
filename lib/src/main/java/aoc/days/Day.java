@@ -1,4 +1,4 @@
-package aoc.lib.days;
+package aoc.days;
 
 import java.io.File;
 import java.net.URL;

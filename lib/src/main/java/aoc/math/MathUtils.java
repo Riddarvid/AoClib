@@ -1,4 +1,4 @@
-package aoc.lib.math;
+package aoc.math;
 
 import java.util.List;
 

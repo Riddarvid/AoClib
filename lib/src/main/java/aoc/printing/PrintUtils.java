@@ -1,4 +1,4 @@
-package aoc.lib.printing;
+package aoc.printing;
 
 /**
  * A collection of static printing utilities.

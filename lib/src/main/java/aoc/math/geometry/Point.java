@@ -1,4 +1,4 @@
-package aoc.lib.math.geometry;
+package aoc.math.geometry;
 
 import java.util.Objects;
 

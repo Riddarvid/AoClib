@@ -1,12 +1,17 @@
-package aoc.lib.parsing;
+package aoc.parsing;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 /**
  * A collection of static parsing utilities.
  */
 public class ParsingUtils {
+    private static final Pattern positiveIntegersPattern = Pattern.compile("[0-9]+");
+    private static final Pattern negativeIntegersPattern = Pattern.compile("-[0-9]+");
+
     /**
      * Converts a list of strings into a matrix of booleans.
      * The character trueChar is converted to true, all others are converted to false.
@@ -60,21 +65,10 @@ public class ParsingUtils {
      * @return All positive integers found.
      */
     public static List<Integer> getIntegers(String input) {
-        int start = 0;
         List<Integer> integers = new ArrayList<>();
-        while (start < input.length()) {
-            while (start < input.length() && !Character.isDigit(input.charAt(start))) {
-                start++;
-            }
-            if (start >= input.length()) {
-                break;
-            }
-            int end = start + 1;
-            while (end < input.length() && Character.isDigit(input.charAt(end))) {
-                end ++;
-            }
-            integers.add(Integer.parseInt(input.substring(start, end)));
-            start = end + 1;
+        Matcher matcher = positiveIntegersPattern.matcher(input);
+        while (matcher.find()) {
+            integers.add(Integer.parseInt(matcher.group()));
         }
         return integers;
     }
@@ -85,21 +79,10 @@ public class ParsingUtils {
      * @return All positive longs found.
      */
     public static List<Long> getLongs(String input) {
-        int start = 0;
         List<Long> longs = new ArrayList<>();
-        while (start < input.length()) {
-            while (start < input.length() && !Character.isDigit(input.charAt(start))) {
-                start++;
-            }
-            if (start >= input.length()) {
-                break;
-            }
-            int end = start + 1;
-            while (end < input.length() && Character.isDigit(input.charAt(end))) {
-                end ++;
-            }
-            longs.add(Long.parseLong(input.substring(start, end)));
-            start = end + 1;
+        Matcher matcher = positiveIntegersPattern.matcher(input);
+        while (matcher.find()) {
+            longs.add(Long.parseLong(matcher.group()));
         }
         return longs;
     }
@@ -110,50 +93,11 @@ public class ParsingUtils {
      * @return All integers found.
      */
     public static List<Integer> getIntegersNegative(String input) {
-        int start = 0;
         List<Integer> integers = new ArrayList<>();
-        while (start < input.length()) {
-            while (start < input.length() && !Character.isDigit(input.charAt(start)) && input.charAt(start) != '-') {
-                start++;
-            }
-            if (start >= input.length()) {
-                break;
-            }
-            boolean negative = false;
-            int end = start + 1;
-            while (end < input.length() && Character.isDigit(input.charAt(end))) {
-                end ++;
-            }
-            int toBeAdded = Integer.parseInt(input.substring(start, end));
-            integers.add(toBeAdded);
-            start = end + 1;
+        Matcher matcher = negativeIntegersPattern.matcher(input);
+        while (matcher.find()) {
+            integers.add(Integer.parseInt(matcher.group()));
         }
         return integers;
-    }
-
-    /**
-     * Tokenizes a string based on the given delimiter.
-     * @param input The string to tokenize.
-     * @param delimiter The delimiter used in tokenizing the string.
-     * @return A list of tokens.
-     */
-    public static List<String> getTokens(String input, char delimiter) {
-        int start = 0;
-        List<String> tokens = new ArrayList<>();
-        while (start < input.length()) {
-            while (start < input.length() && input.charAt(start) == delimiter) {
-                start++;
-            }
-            if (start >= input.length()) {
-                break;
-            }
-            int end = start + 1;
-            while (end < input.length() && input.charAt(end) != delimiter) {
-                end ++;
-            }
-            tokens.add(input.substring(start, end));
-            start = end + 1;
-        }
-        return tokens;
     }
 }

@@ -22,7 +22,8 @@ repositories {
 
 dependencies {
     // Use JUnit Jupiter for testing.
-    testImplementation 'org.junit.jupiter:junit-jupiter:5.7.2'
+    testImplementation 'org.junit.jupiter:junit-jupiter-api:5.8.1'
+    testRuntimeOnly 'org.junit.jupiter:junit-jupiter-engine:5.8.1'
 }
 
 java{
@@ -36,4 +37,8 @@ publishing {
             from components.java
         }
     }
+}
+
+test {
+    useJUnitPlatform()
 }
