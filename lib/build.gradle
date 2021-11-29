@@ -9,11 +9,9 @@
 plugins {
     // Apply the java-library plugin for API and implementation separation.
     id 'java-library'
-    id 'maven-publish'
-    id 'signing'
 }
 
-group = 'io.github.riddarvid'
+group = 'com.github.Riddarvid'
 version = '1.0.0'
 
 repositories {
@@ -24,4 +22,9 @@ repositories {
 dependencies {
     // Use JUnit Jupiter for testing.
     testImplementation 'org.junit.jupiter:junit-jupiter:5.7.2'
+}
+
+java{
+    withSourcesJar()
+    withJavadocJar()
 }
