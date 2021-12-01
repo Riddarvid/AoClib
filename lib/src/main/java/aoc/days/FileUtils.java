@@ -3,6 +3,7 @@ package aoc.days;
 import java.io.*;
 import java.nio.file.Files;
 import java.util.List;
+import java.util.stream.Collectors;
 
 class FileUtils {
     static List<String> getLines(File f) {
@@ -18,6 +19,6 @@ class FileUtils {
     }
 
     public static List<String> getLines(InputStream is) {
-        return new BufferedReader(new InputStreamReader(is)).lines().toList();
+        return new BufferedReader(new InputStreamReader(is)).lines().collect(Collectors.toList());
     }
 }
