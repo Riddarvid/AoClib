@@ -12,12 +12,12 @@ public abstract class Day {
      * The constructor will populate this list with the contents of each row of the input.
      */
     protected List<String> lines;
-    private static final String fileName = "input";
+    private static final String DEFAULT_FILE_NAME = "input";
 
     /**
      * Reads the input file located at the same level as the class extending this one.
      */
-    public Day() {
+    public Day(String fileName) {
         URL url = getClass().getResource(fileName);
         if (url == null || url.getPath() == null) {
             System.out.println("No such file found: " + fileName);
@@ -25,6 +25,13 @@ public abstract class Day {
             File f = new File(url.getPath());
             lines = FileUtils.getLines(f);
         }
+    }
+
+    /**
+     * Reads the input file located at the same level as the class extending this one.
+     */
+    public Day() {
+        this(DEFAULT_FILE_NAME);
     }
 
     /**
