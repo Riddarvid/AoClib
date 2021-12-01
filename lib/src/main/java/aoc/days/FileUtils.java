@@ -1,8 +1,6 @@
 package aoc.days;
 
-import java.io.File;
-import java.io.FileNotFoundException;
-import java.io.IOException;
+import java.io.*;
 import java.nio.file.Files;
 import java.util.List;
 
@@ -17,5 +15,9 @@ class FileUtils {
             e.printStackTrace();
         }
         return null;
+    }
+
+    public static List<String> getLines(InputStream is) {
+        return new BufferedReader(new InputStreamReader(is)).lines().toList();
     }
 }
