@@ -1,10 +1,6 @@
 package aoc.days;
 
-import java.io.BufferedReader;
-import java.io.File;
 import java.io.InputStream;
-import java.io.InputStreamReader;
-import java.net.URL;
 import java.util.List;
 
 /**
@@ -15,12 +11,8 @@ public abstract class Day {
      * The constructor will populate this list with the contents of each row of the input.
      */
     protected List<String> lines;
-    private static final String DEFAULT_FILE_NAME = "input";
 
-    /**
-     * Reads the input file located at the same level as the class extending this one.
-     */
-    public Day(String fileName) {
+    private void readLines(String fileName) {
         InputStream is = getClass().getClassLoader().getResourceAsStream(fileName);
         if (is == null) {
             System.out.println("No such file found: " + fileName);
@@ -30,16 +22,10 @@ public abstract class Day {
     }
 
     /**
-     * Reads the input file located at the same level as the class extending this one.
-     */
-    public Day() {
-        this(DEFAULT_FILE_NAME);
-    }
-
-    /**
      * Executes the abstract methods setup, part1 and part2.
      */
-    public void run() {
+    public void run(String fileName) {
+        readLines(fileName);
         setup();
         part1();
         part2();
@@ -48,11 +34,17 @@ public abstract class Day {
     /**
      * Same as run, but prints the result of part1 and part2.
      */
-    public void runAndPrint() {
+    public void runAndPrint(String fileName) {
+        readLines(fileName);
         setup();
         System.out.println(part1());
         System.out.println(part2());
     }
+
+    /**
+     * Optional method for preparing data.
+     */
+    public abstract void setup();
 
     /**
      * Executes the first part of the solution.
@@ -65,10 +57,4 @@ public abstract class Day {
      * @return The answer for the second part of the solution.
      */
     public abstract long part2();
-
-
-    /**
-     * Optional method for preparing data.
-     */
-    public abstract void setup();
 }
