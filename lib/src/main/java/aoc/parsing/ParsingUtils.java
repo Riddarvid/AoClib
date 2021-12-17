@@ -10,7 +10,7 @@ import java.util.regex.Pattern;
  */
 public class ParsingUtils {
     private static final Pattern positiveIntegersPattern = Pattern.compile("[0-9]+");
-    private static final Pattern negativeIntegersPattern = Pattern.compile("-[0-9]+");
+    private static final Pattern negativeIntegersPattern = Pattern.compile("-?[0-9]+");
 
     /**
      * Converts a list of strings into a matrix of booleans.
