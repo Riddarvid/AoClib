@@ -87,6 +87,20 @@ public class PointND {
     }
 
     @Override
+    public String toString() {
+        if (coordinates.length == 0) {
+            return "Empty point";
+        }
+        StringBuilder sb = new StringBuilder();
+        sb.append('(').append(coordinates[0]);
+        for (int coordinate : coordinates) {
+            sb.append(',').append(coordinate);
+        }
+        sb.append(')');
+        return sb.toString();
+    }
+
+    @Override
     public boolean equals(Object o) {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
