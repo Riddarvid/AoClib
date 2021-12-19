@@ -7,6 +7,10 @@ public class Vector {
     private final int x;
     private final int y;
 
+    public static VectorND getNullVector(int nDimensions) {
+        return new VectorND(new int[nDimensions]);
+    }
+
     /**
      * Constructs a vector from the given coordinates.
      * @param x The x coordinate.

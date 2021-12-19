@@ -8,15 +8,18 @@ import java.util.Set;
  * A class representing an N-dimensional point.
  */
 public class PointND {
-    int[] coordinates;
+    private final int[] coordinates;
+
+    public static PointND getOrigo(int nDimensions) {
+        return new PointND(new int[nDimensions]);
+    }
 
     /**
      * Constructs a point in n dimension.
      * @param values The values in the various dimensions.
      */
     public PointND(int... values) {
-        coordinates = new int[values.length];
-        System.arraycopy(values, 0, coordinates, 0, values.length);
+        coordinates = values.clone();
     }
 
     /**
@@ -84,6 +87,58 @@ public class PointND {
             neighbours.addAll(getNeighbours(i + 1, newSoFar));
         }
         return neighbours;
+    }
+
+    /**
+     * Translates this point by the given vector.
+     * @param vector The vector to translate by.
+     * @return A new point created at the specified location.
+     */
+    public PointND moveBy(VectorND vector) {
+        int[] newCoordinates = new int[coordinates.length];
+        for (int i = 0; i < coordinates.length; i++) {
+            newCoordinates[i] = coordinates[i] + vector.getCoordinate(i);
+        }
+        return new PointND(newCoordinates);
+    }
+
+    /**
+     * Translates this point by the x and y values.
+     * @param values The values to translate by
+     * @return A new point created at the specified location.
+     */
+    public PointND moveBy(int... values) {
+        return moveBy(new VectorND(values));
+    }
+
+    /**
+     * Calculates the vector between this point and the given point.
+     * @param other The other point.
+     * @return The vector between this point and the given point.
+     */
+    private VectorND vectorTo(PointND other) {
+        int[] newCoordinates = new int[coordinates.length];
+        for (int i = 0; i < coordinates.length; i++) {
+            newCoordinates[i] = other.getCoordinate(i) - getCoordinate(i);
+        }
+        return new VectorND(newCoordinates);
+    }
+
+    /**
+     * Calculates the manhattan distance between this point and origo.
+     * @return The manhattan distance between this point and origo.
+     */
+    public int manhattanDistanceTo() {
+        return manhattanDistanceTo(getOrigo(getDimensions()));
+    }
+
+    /**
+     * Calculates the manhattan distance between this point and the given point.
+     * @param other The other point.
+     * @return The manhattan distance between this point and the given point.
+     */
+    public int manhattanDistanceTo(PointND other) {
+        return vectorTo(other).manhattanLength();
     }
 
     @Override
