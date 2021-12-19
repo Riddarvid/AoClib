@@ -2,7 +2,6 @@ package aoc.math.geometry;
 
 import java.util.Arrays;
 import java.util.HashSet;
-import java.util.InputMismatchException;
 import java.util.Set;
 
 /**
@@ -13,15 +12,11 @@ public class PointND {
 
     /**
      * Constructs a point in n dimension.
-     * @param n The number of dimensions.
      * @param values The values in the various dimensions.
      */
-    public PointND(int n, int... values) {
-        if (n != values.length) {
-            throw new InputMismatchException(n + " != " + values.length);
-        }
-        coordinates = new int[n];
-        System.arraycopy(values, 0, coordinates, 0, n);
+    public PointND(int... values) {
+        coordinates = new int[values.length];
+        System.arraycopy(values, 0, coordinates, 0, values.length);
     }
 
     /**
@@ -43,6 +38,15 @@ public class PointND {
      */
     public int getDimensions() {
         return coordinates.length;
+    }
+
+    /**
+     * Gets the specified coordinate
+     * @param index The index of the coordinate.
+     * @return The coordinate at the specified index.
+     */
+    public int getCoordinate(int index) {
+        return coordinates[index];
     }
 
     /**
