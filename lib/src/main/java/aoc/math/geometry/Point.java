@@ -62,20 +62,11 @@ public class Point {
     }
 
     /**
-     * Calculates the manhattan distance between this point and the given point.
-     * @param other The other point.
-     * @return The manhattan distance between this point and the given point.
-     */
-    public int manhattanDistanceTo(Point other) {
-        return vectorTo(other).manhattanLength();
-    }
-
-    /**
      * Calculates the vector between this point and the given point.
      * @param other The other point.
      * @return The vector between this point and the given point.
      */
-    private Vector vectorTo(Point other) {
+    public Vector vectorTo(Point other) {
         return new Vector(other.x - x, other.y - y);
     }
 
@@ -85,6 +76,15 @@ public class Point {
      */
     public int manhattanDistanceTo() {
         return manhattanDistanceTo(new Point());
+    }
+
+    /**
+     * Calculates the manhattan distance between this point and the given point.
+     * @param other The other point.
+     * @return The manhattan distance between this point and the given point.
+     */
+    public int manhattanDistanceTo(Point other) {
+        return vectorTo(other).manhattanLength();
     }
 
     @Override
