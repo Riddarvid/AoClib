@@ -116,7 +116,7 @@ public class PointND {
      * @param other The other point.
      * @return The vector between this point and the given point.
      */
-    private VectorND vectorTo(PointND other) {
+    public VectorND vectorTo(PointND other) {
         int[] newCoordinates = new int[coordinates.length];
         for (int i = 0; i < coordinates.length; i++) {
             newCoordinates[i] = other.getCoordinate(i) - getCoordinate(i);
