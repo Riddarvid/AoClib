@@ -50,6 +50,14 @@ public class PointND {
     }
 
     /**
+     * Gets the coordinates as an array.
+     * @return The coordinates.
+     */
+    public int[] getCoordinates() {
+        return coordinates.clone();
+    }
+
+    /**
      * Method for finding the coordinates of all points adjacent to this one.
      * @return The set of points adjacent to this point.
      */
