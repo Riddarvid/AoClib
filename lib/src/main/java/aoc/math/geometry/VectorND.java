@@ -1,5 +1,7 @@
 package aoc.math.geometry;
 
+import java.util.Arrays;
+
 public class VectorND {
     private final int[] coordinates;
 
@@ -82,5 +84,32 @@ public class VectorND {
      */
     public VectorND add(int... values) {
         return add(new VectorND(values));
+    }
+
+    @Override
+    public String toString() {
+        if (coordinates.length == 0) {
+            return "Empty vector";
+        }
+        StringBuilder sb = new StringBuilder();
+        sb.append('(').append(coordinates[0]);
+        for (int index = 1; index < coordinates.length; index++) {
+            sb.append(',').append(coordinates[index]);
+        }
+        sb.append(')');
+        return sb.toString();
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        VectorND vectorND = (VectorND) o;
+        return Arrays.equals(coordinates, vectorND.coordinates);
+    }
+
+    @Override
+    public int hashCode() {
+        return Arrays.hashCode(coordinates);
     }
 }
