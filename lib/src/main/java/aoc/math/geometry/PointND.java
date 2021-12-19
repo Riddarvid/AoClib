@@ -93,8 +93,8 @@ public class PointND {
         }
         StringBuilder sb = new StringBuilder();
         sb.append('(').append(coordinates[0]);
-        for (int coordinate : coordinates) {
-            sb.append(',').append(coordinate);
+        for (int index = 1; index < coordinates.length; index++) {
+            sb.append(',').append(coordinates[index]);
         }
         sb.append(')');
         return sb.toString();
