@@ -50,7 +50,7 @@ public class CombinatoricsUtils {
         for (T element : elements) {
             List<T> nextSoFar = new ArrayList<>(soFar);
             nextSoFar.add(element);
-            combinations.addAll(getPermutations(elements, nextSoFar, length));
+            combinations.addAll(getCombinations(elements, nextSoFar, length));
         }
         return combinations;
     }
