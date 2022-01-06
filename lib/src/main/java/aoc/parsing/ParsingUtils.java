@@ -108,6 +108,6 @@ public class ParsingUtils {
 
     public static List<String> getTokens(String input, String regex) {
         String[] tokenArray = input.split(regex);
-        return Arrays.stream(tokenArray).toList();
+        return Arrays.asList(tokenArray);
     }
 }
