@@ -1,6 +1,7 @@
 package aoc.parsing;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
@@ -99,5 +100,14 @@ public class ParsingUtils {
             integers.add(Integer.parseInt(matcher.group()));
         }
         return integers;
+    }
+
+    public static List<String> getTokens(String input, char delimiter) {
+        return getTokens(input, "" + delimiter);
+    }
+
+    public static List<String> getTokens(String input, String regex) {
+        String[] tokenArray = input.split(regex);
+        return Arrays.stream(tokenArray).toList();
     }
 }
