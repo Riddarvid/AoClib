@@ -1,4 +1,4 @@
-package aoc.combinatorics;
+package aoc.math.combinatorics;
 
 import java.util.ArrayList;
 import java.util.List;
