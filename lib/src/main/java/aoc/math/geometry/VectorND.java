@@ -5,6 +5,10 @@ import java.util.Arrays;
 public class VectorND {
     private final int[] coordinates;
 
+    public static VectorND getNullVector(int nDimensions) {
+        return new VectorND(new int[nDimensions]);
+    }
+
     /**
      * Constructs a point in n dimension.
      * @param values The values in the various dimensions.
@@ -12,6 +16,19 @@ public class VectorND {
     public VectorND(int... values) {
         coordinates = new int[values.length];
         System.arraycopy(values, 0, coordinates, 0, values.length);
+    }
+
+    /**
+     * Constructs a vector in n + 1 dimensions given a vector in n dimensions.
+     * @param vector The vector in n dimensions.
+     * @param nextCoordinate The coordinate to be added in the n + 1'th dimension.
+     */
+    public VectorND(VectorND vector, int nextCoordinate) {
+        coordinates = new int[vector.getDimensions() + 1];
+        if (vector.getDimensions() >= 0) {
+            System.arraycopy(vector.coordinates, 0, coordinates, 0, vector.getDimensions());
+        }
+        coordinates[vector.getDimensions()] = nextCoordinate;
     }
 
     /**
